@@ -1,0 +1,55 @@
+name: Mirror from Forgejo (BCData)
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  SOURCE_REPO: https://git.fyhenry.uk/henry/BCData.git
+  SOURCE_PATH: "."
+  TARGET_PATH: "."
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Clone source (Forgejo)
+        run: |
+          rm -rf /tmp/src
+          git clone --depth 1 "$SOURCE_REPO" /tmp/src
+
+      - name: Prepare target path
+        run: |
+          mkdir -p "$TARGET_PATH"
+
+      - name: Copy content
+        run: |
+          set -e
+          if [ "$SOURCE_PATH" = "." ]; then
+            rsync -a --delete --exclude ".git" /tmp/src/ "$TARGET_PATH"
+          else
+            rsync -a --delete --exclude ".git" "/tmp/src/$SOURCE_PATH" "$TARGET_PATH"
+          fi
+
+      - name: Commit & push if changed
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "Mirror from Forgejo: $(date -u +%Y-%m-%dT%H:%M:%SZ) | $SOURCE_PATH -> $TARGET_PATH"
+            git push
+          else
+            echo "No changes to commit."
