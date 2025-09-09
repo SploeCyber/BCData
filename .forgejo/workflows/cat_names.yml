@@ -1,0 +1,48 @@
+name: Archive Cat Names
+description: Archives Unit_Explanation files for each country code and locale.
+on:
+    workflow_dispatch:
+      inputs:
+        countryCode:
+          description: "Country Code to Archive"
+          required: true
+          type: choice
+          options:
+            - en
+            - jp
+            - kr
+            - tw
+        gameVersion:
+          description: "Game Version to Archive"
+          required: true
+          type: string
+        lang:
+          description: "EN language to use"
+          required: false
+          default: "base"
+          type: choice
+          options:
+            - base
+            - it
+            - es
+            - fr
+            - th
+            - de
+jobs:
+  archive_names:
+    runs-on: docker-trixie
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Archive Files
+        run: |
+          chmod +x archive_unit_explanations.sh
+          ./archive_unit_explanations.sh ${{ inputs.countryCode }} ${{ inputs.gameVersion }} ${{ inputs.lang }}
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.countryCode }}-${{ inputs.gameVersion }}-${{ inputs.lang }}.zip
+          path: |
+            output_dir/${{ inputs.CountryCode }}/${{ inputs.lang }}/
