@@ -12,6 +12,7 @@ env:
   SOURCE_REPO: https://git.fyhenry.uk/henry/BCData.git
   SOURCE_PATH: "."
   TARGET_PATH: "."
+  SHA_FILE: ".mirror/forgejo_bcdata.sha"
 
 jobs:
   sync:
@@ -27,16 +28,35 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - id: check
+        name: Check remote HEAD and decide
+        run: |
+          set -e
+          REMOTE_SHA="$(git ls-remote "$SOURCE_REPO" HEAD | cut -f1)"
+          echo "remote_sha=$REMOTE_SHA" >> "$GITHUB_OUTPUT"
+          if [ -f "$SHA_FILE" ] && [ "$(cat "$SHA_FILE")" = "$REMOTE_SHA" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Up to date
+        if: ${{ steps.check.outputs.skip == 'true' }}
+        run: echo "Up to date. Skip cloning."
+
       - name: Clone source (Forgejo)
+        if: ${{ steps.check.outputs.skip != 'true' }}
         run: |
           rm -rf /tmp/src
           git clone --depth 1 "$SOURCE_REPO" /tmp/src
 
       - name: Prepare target path
+        if: ${{ steps.check.outputs.skip != 'true' }}
         run: |
           mkdir -p "$TARGET_PATH"
 
       - name: Copy content
+        if: ${{ steps.check.outputs.skip != 'true' }}
         run: |
           set -e
           if [ "$SOURCE_PATH" = "." ]; then
@@ -45,11 +65,20 @@ jobs:
             rsync -a --delete --exclude ".git" "/tmp/src/$SOURCE_PATH" "$TARGET_PATH"
           fi
 
-      - name: Commit & push if changed
+      - name: Update mirror SHA file
+        if: ${{ steps.check.outputs.skip != 'true' }}
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
+          mkdir -p "$(dirname "$SHA_FILE")"
+          echo "${{ steps.check.outputs.remote_sha }}" > "$SHA_FILE"
+
+      - name: Commit & push if changed
+        if: ${{ steps.check.outputs.skip != 'true' }}
+        run: |
+          set -e
+          if [ -n "$(git status --porcelain -- "$TARGET_PATH" "$SHA_FILE")" ]; then
             git add -A
-            git commit -m "Mirror from Forgejo: $(date -u +%Y-%m-%dT%H:%M:%SZ) | $SOURCE_PATH -> $TARGET_PATH"
+            git commit -m "Mirror from Forgejo: ${{ steps.check.outputs.remote_sha }}"
             git push
           else
             echo "No changes to commit."
+          fi
