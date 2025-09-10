@@ -1,16 +1,24 @@
 {
   "base_url": "https://git.fyhenry.uk/henry/BCData/raw/branch/main/game_data/",
   "versions": {
-    "en": ["14.3.0", "14.4.0", "14.5.0", "14.5.1"],
+    "en": ["14.3.0", "14.4.0", "14.5.0", "14.5.1", "14.6.0"],
     "jp": ["14.4.1", "14.5.0", "14.6.0"],
-    "kr": ["14.4.0", "14.5.0", "14.5.1"],
-    "tw": ["14.4.0", "14.5.0", "14.5.1"]
+    "kr": ["14.4.0", "14.5.0", "14.5.1", "14.6.0"],
+    "tw": ["14.4.0", "14.5.0", "14.5.1", "14.6.0"]
   },
   "cat_names": {
     "INFO1": "cat_names is an optional field, if not present, the editor will fallback to the normal method",
     "INFO2": "cat names are downloaded from one of these zip files instead of the normal method",
     "INFO3": "this turns ~800 requests to 1 request, significantly increasing speed and reducing server load",
     "en": {
+      "14.6.0": {
+        "en": "https://git.fyhenry.uk/henry/BCData/actions/runs/45/artifacts/en-14.6.0-base.zip",
+        "it": "https://git.fyhenry.uk/henry/BCData/actions/runs/46/artifacts/en-14.6.0-it.zip",
+        "es": "https://git.fyhenry.uk/henry/BCData/actions/runs/47/artifacts/en-14.6.0-es.zip",
+        "fr": "https://git.fyhenry.uk/henry/BCData/actions/runs/48/artifacts/en-14.6.0-fr.zip",
+        "th": "https://git.fyhenry.uk/henry/BCData/actions/runs/49/artifacts/en-14.6.0-th.zip",
+        "de": "https://git.fyhenry.uk/henry/BCData/actions/runs/50/artifacts/en-14.6.0-de.zip"
+      },
       "14.5.1": {
         "en": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/en.zip",
         "de": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/en-de.zip",
@@ -50,11 +58,13 @@
       "14.4.1": "https://git.fyhenry.uk/henry/BCData/actions/runs/30/artifacts/jp-14.4.1-base.zip"
     },
     "kr": {
+      "14.6.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/51/artifacts/kr-14.6.0-base.zip",
       "14.5.1": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/tw.zip",
       "14.5.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/28/artifacts/kr-14.5.0-base.zip",
       "14.4.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/31/artifacts/kr-14.4.0-base.zip"
     },
     "tw": {
+      "14.6.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/52/artifacts/tw-14.6.0-base.zip",
       "14.5.1": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/tw.zip",
       "14.5.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/29/artifacts/tw-14.5.0-base.zip",
       "14.4.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/29/artifacts/tw-14.4.0-base.zip"
