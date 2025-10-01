@@ -2,7 +2,7 @@
   "base_url": "https://git.fyhenry.uk/henry/BCData/raw/branch/main/game_data/",
   "versions": {
     "en": ["14.3.0", "14.4.0", "14.5.0", "14.5.1", "14.6.0"],
-    "jp": ["14.4.1", "14.5.0", "14.6.0"],
+    "jp": ["14.4.1", "14.5.0", "14.6.0", "14.7.0"],
     "kr": ["14.4.0", "14.5.0", "14.5.1", "14.6.0"],
     "tw": ["14.4.0", "14.5.0", "14.5.1", "14.6.0"]
   },
@@ -53,6 +53,7 @@
       }
     },
     "jp": {
+      "14.7.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/53/artifacts/jp-14.7.0-base.zip",
       "14.6.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/jp.zip",
       "14.5.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/27/artifacts/jp-14.5.0-base.zip",
       "14.4.1": "https://git.fyhenry.uk/henry/BCData/actions/runs/30/artifacts/jp-14.4.1-base.zip"
