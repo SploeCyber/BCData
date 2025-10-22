@@ -1,0 +1,81 @@
+name: Mirror from Forgejo (BCData)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  SOURCE_REPO: https://git.fyhenry.uk/henry/BCData.git
+  SHA_FILE: .mirror/forgejo_bcdata.sha
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout target repo
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Free disk space
+        run: |
+          echo "Before cleanup:"
+          df -h
+          sudo rm -rf /opt/hostedtoolcache /usr/local/lib/android /usr/share/dotnet
+          sudo docker system prune -af || true
+          echo "After cleanup:"
+          df -h
+
+      - name: Set git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - id: check
+        name: Check remote HEAD
+        run: |
+          set -e
+          SHA=$(git ls-remote "$SOURCE_REPO" HEAD | cut -f1)
+          echo "remote_sha=$SHA" >> "$GITHUB_OUTPUT"
+          if [ -f "$SHA_FILE" ] && [ "$(cat "$SHA_FILE")" = "$SHA" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: ${{ steps.check.outputs.skip == 'true' }}
+        run: echo "Up to date."
+
+      - if: ${{ steps.check.outputs.skip != 'true' }}
+        name: Clone and sync from Forgejo (full mirror)
+        run: |
+          set -e
+          echo "Cloning into /mnt..."
+          mkdir -p /mnt/work
+          git clone --depth=1 "$SOURCE_REPO" /mnt/work/src
+
+          echo "Cleaning workspace..."
+          find . -mindepth 1 -maxdepth 1 ! -name ".git" ! -name ".github" -exec rm -rf {} +
+
+          echo "Syncing new content..."
+          rsync -a --delete \
+            --exclude ".git" \
+            --exclude ".github/workflows" \
+            /mnt/work/src/ ./
+
+          mkdir -p "$(dirname "$SHA_FILE")"
+          echo "${{ steps.check.outputs.remote_sha }}" > "$SHA_FILE"
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "Mirror from Forgejo: ${{ steps.check.outputs.remote_sha }}"
+            git push
+          else
+            echo "No changes."
+          fi
+
+      - name: Disk usage summary
+        run: df -h
