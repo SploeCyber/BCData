@@ -1,0 +1,85 @@
+{
+  "base_url": "https://git.fyhenry.uk/henry/BCData/raw/branch/main/game_data/",
+  "versions": {
+    "en": ["14.3.0", "14.4.0", "14.5.0", "14.5.1", "14.6.0", "14.7.0"],
+    "jp": ["14.4.1", "14.5.0", "14.6.0", "14.7.0", "14.7.2"],
+    "kr": ["14.4.0", "14.5.0", "14.5.1", "14.6.0", "14.7.0"],
+    "tw": ["14.4.0", "14.5.0", "14.5.1", "14.6.0", "14.7.0"]
+  },
+  "cat_names": {
+    "INFO1": "cat_names is an optional field, if not present, the editor will fallback to the normal method",
+    "INFO2": "cat names are downloaded from one of these zip files instead of the normal method",
+    "INFO3": "this turns ~800 requests to 1 request, significantly increasing speed and reducing server load",
+    "en": {
+      "14.7.0": {
+        "en": "https://git.fyhenry.uk/henry/BCData/actions/runs/54/artifacts/en-14.7.0-base.zip",
+        "it": "https://git.fyhenry.uk/henry/BCData/actions/runs/55/artifacts/en-14.7.0-it.zip",
+        "es": "https://git.fyhenry.uk/henry/BCData/actions/runs/56/artifacts/en-14.7.0-es.zip",
+        "fr": "https://git.fyhenry.uk/henry/BCData/actions/runs/57/artifacts/en-14.7.0-fr.zip",
+        "th": "https://git.fyhenry.uk/henry/BCData/actions/runs/58/artifacts/en-14.7.0-th.zip",
+        "de": "https://git.fyhenry.uk/henry/BCData/actions/runs/60/artifacts/en-14.7.0-de.zip"
+      },
+      "14.6.0": {
+        "en": "https://git.fyhenry.uk/henry/BCData/actions/runs/45/artifacts/en-14.6.0-base.zip",
+        "it": "https://git.fyhenry.uk/henry/BCData/actions/runs/46/artifacts/en-14.6.0-it.zip",
+        "es": "https://git.fyhenry.uk/henry/BCData/actions/runs/47/artifacts/en-14.6.0-es.zip",
+        "fr": "https://git.fyhenry.uk/henry/BCData/actions/runs/48/artifacts/en-14.6.0-fr.zip",
+        "th": "https://git.fyhenry.uk/henry/BCData/actions/runs/49/artifacts/en-14.6.0-th.zip",
+        "de": "https://git.fyhenry.uk/henry/BCData/actions/runs/50/artifacts/en-14.6.0-de.zip"
+      },
+      "14.5.1": {
+        "en": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/en.zip",
+        "de": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/en-de.zip",
+        "es": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/en-es.zip",
+        "fr": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/en-fr.zip",
+        "it": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/en-it.zip",
+        "th": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/en-th.zip"
+      },
+      "14.5.0": {
+        "en": "https://git.fyhenry.uk/henry/BCData/actions/runs/21/artifacts/names.zip",
+        "de": "https://git.fyhenry.uk/henry/BCData/actions/runs/22/artifacts/names.zip",
+        "es": "https://git.fyhenry.uk/henry/BCData/actions/runs/23/artifacts/names.zip",
+        "fr": "https://git.fyhenry.uk/henry/BCData/actions/runs/24/artifacts/names.zip",
+        "it": "https://git.fyhenry.uk/henry/BCData/actions/runs/25/artifacts/names.zip",
+        "th": "https://git.fyhenry.uk/henry/BCData/actions/runs/26/artifacts/names.zip"
+      },
+      "14.4.0": {
+        "en": "https://git.fyhenry.uk/henry/BCData/actions/runs/33/artifacts/en-14.4.0-base.zip",
+        "de": "https://git.fyhenry.uk/henry/BCData/actions/runs/34/artifacts/en-14.4.0-de.zip",
+        "es": "https://git.fyhenry.uk/henry/BCData/actions/runs/35/artifacts/en-14.4.0-es.zip",
+        "fr": "https://git.fyhenry.uk/henry/BCData/actions/runs/36/artifacts/en-14.4.0-fr.zip",
+        "it": "https://git.fyhenry.uk/henry/BCData/actions/runs/37/artifacts/en-14.4.0-it.zip",
+        "th": "https://git.fyhenry.uk/henry/BCData/actions/runs/38/artifacts/en-14.4.0-th.zip"
+      },
+      "14.3.0": {
+        "en": "https://git.fyhenry.uk/henry/BCData/actions/runs/39/artifacts/en-14.3.0-base.zip",
+        "de": "https://git.fyhenry.uk/henry/BCData/actions/runs/40/artifacts/en-14.3.0-de.zip",
+        "es": "https://git.fyhenry.uk/henry/BCData/actions/runs/41/artifacts/en-14.3.0-es.zip",
+        "fr": "https://git.fyhenry.uk/henry/BCData/actions/runs/42/artifacts/en-14.3.0-fr.zip",
+        "it": "https://git.fyhenry.uk/henry/BCData/actions/runs/43/artifacts/en-14.3.0-it.zip",
+        "th": "https://git.fyhenry.uk/henry/BCData/actions/runs/44/artifacts/en-14.3.0-th.zip"
+      }
+    },
+    "jp": {
+      "14.7.2": "https://git.fyhenry.uk/henry/BCData/actions/runs/62/artifacts/jp-14.7.2-base.zip",
+      "14.7.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/53/artifacts/jp-14.7.0-base.zip",
+      "14.6.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/jp.zip",
+      "14.5.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/27/artifacts/jp-14.5.0-base.zip",
+      "14.4.1": "https://git.fyhenry.uk/henry/BCData/actions/runs/30/artifacts/jp-14.4.1-base.zip"
+    },
+    "kr": {
+      "14.7.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/63/artifacts/kr-14.7.0-base.zip",
+      "14.6.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/51/artifacts/kr-14.6.0-base.zip",
+      "14.5.1": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/tw.zip",
+      "14.5.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/28/artifacts/kr-14.5.0-base.zip",
+      "14.4.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/31/artifacts/kr-14.4.0-base.zip"
+    },
+    "tw": {
+      "14.7.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/64/artifacts/tw-14.7.0-base.zip",
+      "14.6.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/52/artifacts/tw-14.6.0-base.zip",
+      "14.5.1": "https://git.fyhenry.uk/henry/BCData/actions/runs/20/artifacts/tw.zip",
+      "14.5.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/29/artifacts/tw-14.5.0-base.zip",
+      "14.4.0": "https://git.fyhenry.uk/henry/BCData/actions/runs/29/artifacts/tw-14.4.0-base.zip"
+    }
+  }
+}
