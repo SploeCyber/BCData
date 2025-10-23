@@ -1,3 +1,2 @@
-/apks
-*.zip
-output_dir/en
+apks/
+out/
