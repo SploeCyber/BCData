@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 env:
-  SOURCE_REPO: https://git.fyhenry.uk/henry/BCData.git
+  SOURCE_REPO: https://git.battlecatsmodding.org/fieryhenry/BCData
   SHA_FILE: .mirror/forgejo_bcdata.sha
 
 jobs:
