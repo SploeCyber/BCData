@@ -2,7 +2,8 @@
   "base_url": "https://git.battlecatsmodding.org/fieryhenry/BCData/releases/download/",
   "versions": {
     "en": {
-      "14.7.0": "v14.7.0/en-14.7.0.tar.xz"
+      "14.7.0": "v14.7.0/en-14.7.0.tar.xz",
+      "14.7.1": "v14.7.1-en-kr-tw/en-14.7.1.tar.xz"
     },
     "jp": {
       "14.7.0": "v14.7.0/jp-14.7.0.tar.xz",
@@ -10,10 +11,12 @@
       "15.0.0": "v15.0.0-jp/jp-15.0.0.tar.xz"
     },
     "tw": {
-      "14.7.0": "v14.7.0/tw-14.7.0.tar.xz"
+      "14.7.0": "v14.7.0/tw-14.7.0.tar.xz",
+      "14.7.1": "v14.7.1-en-kr-tw/tw-14.7.1.tar.xz"
     },
     "kr": {
-      "14.7.0": "v14.7.0/kr-14.7.0.tar.xz"
+      "14.7.0": "v14.7.0/kr-14.7.0.tar.xz",
+      "14.7.1": "v14.7.1-en-kr-tw/kr-14.7.1.tar.xz"
     }
   }
 }
