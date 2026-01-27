@@ -14,6 +14,6 @@ if [ "$VERSION" == "" ]; then
   VERSION=apkdown get-latest --package-name "$PACKAGE_NAME"
 fi
 
-apkdown download --package-name "$PACKAGE_NAME" --version "${VERSION}" --output-path "apks/$PACKAGE_NAME/$VERSION.apk" --skip-if-exists
+apkdown download --package-name "$PACKAGE_NAME" --version "${VERSION}" --output-path "apks/$PACKAGE_NAME/$VERSION.apk" --skip-if-exists --provider apk-pure
 
 ./merge.sh "${PACKAGE_NAME}" "${VERSION}"
